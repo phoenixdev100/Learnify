@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background dark:bg-background-dark text-text-primary dark:text-text-primary-dark transition-colors duration-200;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-primary dark:text-text-primary-dark;
+  }
+
+  p {
+    @apply text-text-secondary dark:text-text-secondary-dark;
+  }
+}
+
+@layer components {
+  /* Page Layout */
+  .page-container {
+    @apply pt-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto;
+  }
+
+  .page-header {
+    @apply py-6;
+  }
+
+  .page-title {
+    @apply text-3xl font-bold text-gray-900;
+  }
+
+  .page-subtitle {
+    @apply mt-2 text-lg text-gray-600;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 border border-transparent 
+           rounded-md shadow-sm text-sm font-medium text-white 
+           bg-primary hover:bg-primary/90 dark:bg-primary-dark dark:hover:bg-primary-dark/90
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
+           transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 
+           border border-border dark:border-border-dark rounded-md 
+           shadow-sm text-sm font-medium
+           text-text-primary dark:text-text-primary-dark
+           bg-surface dark:bg-surface-dark 
+           hover:bg-background dark:hover:bg-background-dark
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
+           transition-colors duration-200;
+  }
+
+  /* Navigation */
+  .nav-link {
+    @apply text-text-secondary dark:text-text-secondary-dark
+           hover:text-text-primary dark:hover:text-text-primary-dark
+           transition-colors duration-200;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-full h-0.5 bg-primary transform scale-x-0
+           transition-transform duration-300 ease-out origin-center;
+  }
+
+  .nav-link:hover::after {
+    @apply scale-x-100;
+  }
+
+  .mobile-nav-link {
+    @apply block w-full text-left px-4 py-2 text-base text-gray-700 
+           hover:bg-gray-50 hover:text-primary transition-colors duration-200
+           rounded-lg;
+  }
+
+  .form-select {
+    @apply rounded-lg border-gray-300 focus:border-primary focus:ring focus:ring-primary/20 
+           transition duration-200 bg-white;
+  }
+
+  .card {
+    @apply bg-surface dark:bg-surface-dark border border-border dark:border-border-dark rounded-lg shadow-sm transition-colors duration-200;
+  }
+
+  /* Logo */
+  .logo-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent
+           font-bold text-xl leading-none;
+  }
+
+  .logo-container {
+    @apply flex items-center space-x-2 p-1 rounded-lg transition-all duration-200
+           hover:bg-gray-100/80;
+  }
+
+  .logo-icon {
+    @apply w-8 h-8 rounded-lg bg-gradient-to-r from-primary to-secondary
+           flex items-center justify-center shadow-md;
+  }
+
+  /* Navbar */
+  .nav-container {
+    @apply fixed w-full z-50 transition-all duration-300;
+  }
+
+  .nav-scrolled {
+    @apply bg-white/95 backdrop-blur-sm shadow-lg;
+  }
+
+  .nav-transparent {
+    @apply bg-white/80;
+  }
+
+  .nav-mobile-menu {
+    @apply fixed inset-0 bg-gray-800 bg-opacity-25 backdrop-blur-sm;
+  }
+
+  /* Forms */
+  .form-group {
+    @apply mb-4;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  .form-input {
+    @apply block w-full px-3 py-2 
+           border border-border dark:border-border-dark
+           rounded-md shadow-sm 
+           text-text-primary dark:text-text-primary-dark
+           bg-surface dark:bg-surface-dark
+           focus:ring-primary focus:border-primary
+           transition-colors duration-200;
+  }
+
+  .form-error {
+    @apply mt-1 text-sm text-red-600;
+  }
+
+  /* Content Sections */
+  .section {
+    @apply py-12;
+  }
+
+  .section-title {
+    @apply text-2xl font-bold text-gray-900 mb-4;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-gray-600 mb-8;
+  }
+
+  .label {
+    @apply block text-sm font-medium 
+           text-text-secondary dark:text-text-secondary-dark
+           transition-colors duration-200;
+  }
+
+  .link {
+    @apply text-primary dark:text-primary-dark 
+           hover:text-primary/80 dark:hover:text-primary-dark/80
+           transition-colors duration-200;
+  }
+
+  .nav-link-active {
+    @apply text-primary dark:text-primary-dark;
+  }
+}
+
+/* Transitions */
+.theme-transition {
+  @apply transition-all duration-200;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  @apply w-2;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background dark:bg-background-dark;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border dark:bg-border-dark rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-text-secondary dark:bg-text-secondary-dark;
+}
+
+/* Smooth Scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Text Selection */
+::selection {
+  background-color: theme('colors.primary.DEFAULT');
+  color: white;
+}
+
+/* Focus Outline */
+*:focus {
+  outline: 2px solid theme('colors.primary.DEFAULT');
+  outline-offset: 2px;
+}
+
+/* Custom Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Gradient Text */
+.gradient-text {
+  @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+}
+
+/* Navbar Animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.nav-slide-down {
+  animation: slideDown 0.3s ease-out forwards;
+}
+
+/* Mobile Menu Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu-fade-in {
+  animation: fadeIn 0.2s ease-out forwards;
+}
+
+/* Logo Hover Effect */
+.logo-hover {
+  @apply transition-transform duration-300 ease-out;
+}
+
+.logo-hover:hover {
+  transform: scale(1.05);
+}
